@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="#" class="form">
+        <input type = "text" class="input">
+        <button class="submit">Отправить</button>
+    </form>
+    <script>
+        const buttonEl = document.querySelector('.submit');
+        const inputEl = document.querySelector('.input');
+        buttonEl.addEventListener('click', function (e) {
+            console.log(inputEl.value);
+            if(inputEl.value === 'password'){
+                inputEl.style.border = '4px solid green';
+
+            } else {
+                inputEl.value = "Пароль не верный";
+                inputEl.style.border = '4px solid red';
+            }
+        });
+    </script>
+</body>
+</html>

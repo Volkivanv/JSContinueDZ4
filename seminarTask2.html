@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form class="form">
+      <label><input type="radio" name="selectDrink" value="Чай закончился" />Чай</label>
+      <label><input type="radio" name="selectDrink" value="Кофе закончился" />Кофе</label>
+      <button class="submit">Отправить</button>
+      <h2 class="heading-message">Выбрать напиток</h2>
+    </form>
+    <script>
+      const formEl = document.querySelector(".form");
+      // console.log(formEl);
+      const buttonEl = document.querySelector(".submit");
+      const headingMessage = document.querySelector(".heading-message");
+      buttonEl.addEventListener("click", function (e) {
+        const textEl = formEl.elements["selectDrink"].value;
+        if (textEl) {
+          headingMessage.textContent = textEl;
+        }
+        e.preventDefault();
+      });
+    </script>
+  </body>
+</html>

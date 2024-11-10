@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="heading">Заголовок</h1>
+    <input type="text" class="input">
+    <script>
+        const h1El = document.querySelector('.heading');
+        const inputEl = document.querySelector('.input');
+        inputEl.addEventListener('input', function (e) {
+            if (inputEl.value) {
+                h1El.textContent = inputEl.value;
+            } else {
+                h1El.textContent = "Заголовок";
+            }
+            
+        });
+    </script>
+</body>
+</html>

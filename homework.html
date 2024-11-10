@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homework5</title>
+    <style>
+      .error {
+        border: 2px solid red;
+        outline: none; /* Убираем стандартное выделение прифокусе */
+      }
+      /* Анимация для появления */
+      .animate_animated {
+        animation-duration: 1s; /* Продолжительность анимации */
+        animation-fill-mode: both; /* Держать финальноесостояние анимации */
+      }
+      .animate_fadeInLeftBig {
+        @keyframes fadeInLeftBig {
+          0% {
+            opacity: 0;
+            transform: translateX(-1000px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        animation-name: fadeInLeftBig;
+      }
+    </style>
+  </head>
+  <body>
+    <input id="from" type="text" />
+    В инпуте написано: <span></span>
+    <br />
+    <button class="messageBtn">Показать блок</button>
+    <div class="message">Привет :)</div>
+    <br />
+    <form>
+      <label>
+        Первый инпут:
+        <input class="form-control" type="text" />
+      </label>
+      <br />
+      <br />
+      <label>
+        Второй инпут:
+        <select class="form-control">
+          <option value=""></option>
+          <option value="1">Один</option>
+          <option value="2">Два</option>
+        </select>
+      </label>
+      <br />
+      <br />
+      <button type="submit">Отправить</button>
+    </form>
+    <script>
+      /* 1. При изменении значения в <input> с id="from", значение, содержащееся
+в нем, должно моментально отображаться в <span>.
+○ Это значит, что при каждом изменении текста в инпуте, текст в <span>
+должен обновляться соответственно. */
+      const from = document.querySelector("#from");
+      const span = document.querySelector("span");
+      from.addEventListener("input", function (e) {
+        if (from.value) {
+          span.textContent = from.value;
+        } else {
+          span.textContent = "";
+        }
+      });
+      /* 2. При клике на кнопку с классом messageBtn необходимо выполнить
+следующие действия для элемента с классом message:
+○ Добавить два класса: animate_animated и animate_fadeInLeftBig.
+○ Установить стиль visibility в значение 'visible'. */
+      const messageBtn = document.querySelector(".messageBtn");
+      const message = document.querySelector(".message");
+      console.log(messageBtn);
+      console.log(message);
+      messageBtn.addEventListener("click", function (e) {
+        message.classList.add("animate_animated");
+        message.classList.add("animate_fadeInLeftBig");
+        message.style.visibility = "visible";
+      });
+      console.log(message);
+      /* 3. При отправке формы проверьте, заполнены ли все поля.
+○ Если какое-либо поле не заполнено, форма не должна отправляться.
+○ Незаполненные поля должны быть подсвечены (добавлен класс error).
+○ Как только пользователь начинает заполнять поле, выполните проверку:
+■ Если поле пустое, подсветите его (добавьте класс error).
+■ Если поле заполнено, уберите подсветку (удалите класс error). */
+      const form = document.querySelector("form");
+      const submit = document.querySelector("button[type=submit]");
+      const fields = form.querySelectorAll(".form-control");
+      /* console.log(fields); */
+      submit.addEventListener("click", function (e) {
+        fields.forEach((ipt) => {
+          if (!ipt.value) {
+            ipt.classList.add("error");
+            e.preventDefault();
+          } else {
+            if (ipt.classList.contains("remove")) {
+              ipt.classList.remove("error");
+            }
+          }
+        });
+      });
+
+      fields.forEach((ipt) => {
+        ipt.addEventListener("input", function (e) {
+          if (!ipt.value) {
+            ipt.classList.add("error");
+          } else {
+            ipt.classList.remove("error");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
